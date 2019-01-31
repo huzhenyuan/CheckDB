@@ -27,7 +27,7 @@ public class Check {
 
     AtomicLong counter = new AtomicLong(0);
     logger.info("total: "+dataSource.getTotal());
-    dataSource.parallelStream().forEach( dataItem -> {
+    dataSource.stream().forEach( dataItem -> {
       TransactionInfoCapsule infoCapsule = null;
       try {
         infoCapsule = new TransactionInfoCapsule(dataItem.getValue());
@@ -44,6 +44,9 @@ public class Check {
 //s
         internalItem.getCallValueInfoOrBuilderList().forEach(element->{
             logger.info("tokenId:" + element.getTokenId());
+            if (element.getTokenId().equals("0")){
+              logger.error("0");
+            }
         });
       });
     });
