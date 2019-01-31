@@ -26,6 +26,7 @@ public class Check {
     dataSource.initDB();
 
     AtomicLong counter = new AtomicLong(0);
+    logger.info("total: "+dataSource.getTotal());
     dataSource.parallelStream().forEach( dataItem -> {
       TransactionInfoCapsule infoCapsule = null;
       try {
@@ -40,11 +41,13 @@ public class Check {
       if(internalList.isEmpty()) return;
       TransactionInfoCapsule finalInfoCapsule = infoCapsule;
       internalList.forEach(internalItem -> {
-        if(Wallet.encode58Check(internalItem.getTransferToAddress().toByteArray()).equals("TFF67vC8qwcXNzoKnuuSkYKGBerEew1Ant")) {
-          System.out.println(Hex.toHexString(finalInfoCapsule.getId()));
-        }
+//s
+        internalItem.getCallValueInfoOrBuilderList().forEach(element->{
+            logger.info("tokenId:" + element.getTokenId());
+        });
       });
     });
+    dataSource.closeDB();
 
   }
 }
