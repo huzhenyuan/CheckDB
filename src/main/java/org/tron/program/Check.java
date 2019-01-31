@@ -26,7 +26,7 @@ public class Check {
     dataSource.initDB();
 
     AtomicLong counter = new AtomicLong(0);
-    dataSource.stream().forEach( dataItem -> {
+    dataSource.parallelStream().forEach( dataItem -> {
       TransactionInfoCapsule infoCapsule = null;
       try {
         infoCapsule = new TransactionInfoCapsule(dataItem.getValue());
