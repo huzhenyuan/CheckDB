@@ -26,7 +26,6 @@ public class Check {
     dataSource.initDB();
 
     AtomicLong counter = new AtomicLong(0);
-    logger.info("total: "+dataSource.getTotal());
     dataSource.stream().forEach( dataItem -> {
       TransactionInfoCapsule infoCapsule = null;
       try {
