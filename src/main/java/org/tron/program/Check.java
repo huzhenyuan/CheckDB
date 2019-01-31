@@ -35,7 +35,7 @@ public class Check {
       }
       List<InternalTransaction> internalList = infoCapsule.getInstance().getInternalTransactionsList();
       if(counter.getAndIncrement() % 10000 ==0) {
-        System.out.println("Counter:" + counter.get());
+        logger.info("Counter:" + counter.get());
       }
       if(internalList.isEmpty()) return;
       TransactionInfoCapsule finalInfoCapsule = infoCapsule;
